@@ -13,9 +13,19 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-// Enable CORS for frontend-backend communication
+const allowedOrigins = [
+  "http://localhost:5173",           // local dev
+  "https://job-tracker-suresh.vercel.app"   // deployed frontend
+];
+
 app.use(cors({
-  origin: "http://localhost:5173", 
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
 
