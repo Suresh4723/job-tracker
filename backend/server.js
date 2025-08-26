@@ -14,13 +14,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 const allowedOrigins = [
-  "http://localhost:5173",           // local dev
-  "https://job-tracker-suresh.vercel.app"   // deployed frontend
+  "http://localhost:5173",
+  "https://job-tracker-suresh.vercel.app"
 ];
-
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ""))) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -28,6 +27,7 @@ app.use(cors({
   },
   credentials: true,
 }));
+
 
 // Connect to MongoDB
 connectDB();
