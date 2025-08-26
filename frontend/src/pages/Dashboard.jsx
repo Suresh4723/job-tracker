@@ -1,6 +1,6 @@
 // src/pages/Dashboard.jsx
 import { useJobs } from "../contexts/JobsContext";
-import JobCard from "../components/jobCard";
+import JobCard from "../components/JobCard";
 import JobForm from "../components/JobForm";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
