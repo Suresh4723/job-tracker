@@ -1,8 +1,7 @@
-// src/api/axios.js
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://job-tracker-77v7.onrender.com/api',
   withCredentials: true,
 });
 
